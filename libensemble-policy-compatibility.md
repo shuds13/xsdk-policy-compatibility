@@ -37,7 +37,7 @@ For current xSDK member packages: If you were not fully compatible at some point
 
 M4 details <a id="m4-details"></a>: libEnsemble is a Python code and so does not directly use compilers. It does, however, use NumPy, SciPy and mpi4py which use compiled extensions. The current CI tests of libEnsemble use the standard CPython compatible builds of these extensions (which are built using the GNU compilers).
 
-libEnsemble is supported on Linux platforms and macOS. Windows platforms are currently not supported. Testing supports Python versions >=3.5 (mirroring NumPy's support of Python 3).
+libEnsemble is supported on Linux platforms and macOS. Windows platforms are currently not supported.
 
 Recommendation: For Python packages, we should consider policies for support of Python versions and possibly Python interpreter/compiler implementations (e.g. CPython, pypy).
 We should also consider requiring support for Python software stacks (e.g. Intel distribution for Python).
