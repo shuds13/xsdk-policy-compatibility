@@ -19,7 +19,7 @@ For current xSDK member packages: If you were not fully compatible at some point
 | Policy                 |Support| Notes                   |
 |------------------------|-------|-------------------------|
 |**M1.** Support xSDK community GNU Autoconf or CMake options. |N/A| libEnsemble is in the Spack repository and can be installed with `spack install py-libensemble`. The build tool used is `pip`, and the package is installed either from PyPI, for released versions, or GitHub, for the development version. GNU Autoconf or CMake are not typical for a Python package.
-|**M2.** Provide a comprehensive test suite for correctness of installation verification. |Full| libEnsemble has a test suite that includes both unit tests and regression tests that are run on every push to GitHub via Travis CI. In addition to this test suite, further scaling tests are run, currently manually, on HPC platforms including Theta and Summit. [M2 details](#m2-details)
+|**M2.** Provide a comprehensive test suite for correctness of installation verification. |Full| libEnsemble has a test suite that includes both unit tests and regression tests that are run on every push to GitHub via Travis CI. In addition to this test suite, further scaling tests are run, currently manually, on HPC platforms including Theta and Summit.
 |**M3.** Employ user-provided MPI communicator (no MPI_COMM_WORLD). |Full|libEnsemble takes an MPI communicator as an option; if libEnsemble is configured for MPI mode, this provided communicator will be employed. If no communicator is given, a duplicate of MPI_COMM_WORLD is taken as a default. |
 |**M4.** Give best effort at portability to key architectures (standard Linux distributions, GNU, Clang, vendor compilers, and target machines at ALCF, NERSC, OLCF). |Full| libEnsemble is tested regularly, including prior to every release, on ALCF (Theta), OLCF (Summit) and NERSC (Cori) platforms. [M4 details](#m4-details)|
 |**M5.** Provide a documented, reliable way to contact the development team. |Full| The libEnsemble team can be contacted through: 1) The public [issues page on GitHub](https://github.com/Libensemble/libensemble/issues). 2) [Slack](https://libensemble.slack.com). 3) The public email list libensemble@mcs.anl.gov. |
@@ -35,15 +35,13 @@ For current xSDK member packages: If you were not fully compatible at some point
 |**M15.** All xSDK compatibility changes should be sustainable. |Full| All the changes here should be sustainable. |
 |**M16.** The package must support production-quality installation compatible with the xSDK install tool and xSDK metapackage. |Full|libEnsemble configure and install has full support from Spack. |
 
-
-M2 details<a id="m2-details"></a>: There are plans to replace manual HPC testing with GitLab CI under the ECP Continuous Integration Testing and Release project.
-
-M4 details <a id="m4-details"></a>: libEnsemble is a Python code and so does not directly use compilers. It does, however, use NumPy, SciPy and mpi4py which use compiled extensions. The current CI tests of libEnsemble use the standard CPython compatible builds of these extensions(which are built using the GNU compilers).
+M4 details <a id="m4-details"></a>: libEnsemble is a Python code and so does not directly use compilers. It does, however, use NumPy, SciPy and mpi4py which use compiled extensions. The current CI tests of libEnsemble use the standard CPython compatible builds of these extensions (which are built using the GNU compilers).
 
 libEnsemble is supported on Linux platforms and macOS. Windows platforms are currently not supported. Testing supports Python versions >=3.5 (mirroring NumPy's support of Python 3).
 
 Recommendation: For Python packages, we should consider policies for support of Python versions and possibly Python interpreter/compiler implementations (e.g. CPython, pypy).
-We should also consider support for Python software stacks (e.g. Intel distribution for Python).
+We should also consider requiring support for Python software stacks (e.g. Intel distribution for Python).
+We should consider whether building CPython with different compilers (e.g. Intel) should be required.
 
 
 M11 details <a id="m11-details"></a>: Note: The sub-packages in the libensemble directory structure such as `sim_specs` and `gen_specs` may contain print statements. These are considered examples for users, rather than core libEnsemble packages.
